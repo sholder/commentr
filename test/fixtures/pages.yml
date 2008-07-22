@@ -1,7 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
+nv_session_1:
+  name: Session 1
+  site: nentir_vale
 
-two:
-  name: MyString
+nv_online_session_1:
+  name: Session 1
+  site: nentir_vale_online

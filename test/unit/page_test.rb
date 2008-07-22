@@ -18,4 +18,9 @@ class PageTest < ActiveSupport::TestCase
     p.valid?
     assert_nil p.errors.on(:site)
   end
+  
+  def test_belongs_to
+    nv = pages(:nv_session_1)
+    assert_equal sites(:nentir_vale), nv.site
+  end
 end
