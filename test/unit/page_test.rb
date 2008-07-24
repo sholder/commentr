@@ -23,4 +23,11 @@ class PageTest < ActiveSupport::TestCase
     nv = pages(:nv_session_1)
     assert_equal sites(:nentir_vale), nv.site
   end
+  
+  def test_comments_ordering
+    p = pages(:nv_session_1)
+    assert_equal(3, p.comments.length)
+    assert_equal(comments(:kisu), p.comments.first)
+    assert_equal(comments(:steve), p.comments.last)
+  end
 end
