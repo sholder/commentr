@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs 
+    title="Comments for <%= h @page.name %>" 
+    author="Stephen Holder"
+    author_affiliation="www.teamholder.com"
+    >
+      <Require feature="dynamic-height"/>
+  </ModulePrefs> 
+  <Content type="html">
+     <![CDATA[ 
+
+<%= render :partial => 'comments' %>
+
+     ]]>
+  </Content> 
+</Module>
