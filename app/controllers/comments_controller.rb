@@ -1,7 +1,10 @@
 class CommentsController < ApplicationController
   def list
-    p = Page.find(params[:page])
-    @comments = p.comments
-    render :text => 'test'
+    @page = Page.find(params[:page])
+    @comments = @page.comments
+    respond_to do |format|
+      format.html
+      format.xml
+    end
   end
 end
