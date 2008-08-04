@@ -27,5 +27,9 @@ class CommentsControllerTest < ActionController::TestCase
     xhr(:post, :create, {:comment => {:page_id => pages(:nv_session_1).id, :text => 'a new comment', :nickname => 'sholder'}})
     assert_not_nil(assigns(:comment))
     assert_not_nil(Comment.find(assigns(:comment).id))
+    assert_response :success
+    assert_select_rjs :update, :top, "comments"
   end
+  
+  # TODO(sholder) tests for when create fails
 end
