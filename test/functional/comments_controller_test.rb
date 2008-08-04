@@ -28,8 +28,6 @@ class CommentsControllerTest < ActionController::TestCase
     assert_not_nil(assigns(:comment))
     assert_not_nil(Comment.find(assigns(:comment).id))
     assert_response :success
-    assert_select_rjs :update, :top, "comments"
+    assert_select_rjs :insert, :top, 'comment_list'
   end
-  
-  # TODO(sholder) tests for when create fails
 end
