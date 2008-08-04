@@ -7,4 +7,11 @@ class CommentsController < ApplicationController
       format.xml
     end
   end
+  
+  def create
+    if request.post?
+      @comment = Comment.new(params[:comment])
+      @comment.save
+    end
+  end
 end
