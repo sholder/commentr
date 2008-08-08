@@ -1,13 +1,14 @@
 class CommentsController < ApplicationController
-  def list
-    @page = Page.find(params[:page])
+
+  def index
+    @page = Page.find(params[:page_id])
     @comments = @page.comments
     respond_to do |format|
       format.html
       format.xml
     end
   end
-  
+
   def create
     if request.post?
       @comment = Comment.new(params[:comment])
