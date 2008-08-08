@@ -1,0 +1,7 @@
+<% form_for :comment do |form| %>
+    Add a comment: <br/>
+    <p><%= form.text_area :text %></p>
+    <p>Your name: <%= form.text_field :nickname %></p>
+    <%= form.hidden_field :page_id %>
+    <p><%= submit_tag %></p>
+<% end %>
