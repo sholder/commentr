@@ -13,10 +13,10 @@ class PageTest < ActiveSupport::TestCase
   def test_site_required
     p = Page.new
     assert !p.valid?
-    assert_not_nil p.errors.on(:site)
-    p.site = Site.new
+    assert_not_nil p.errors.on(:site_id)
+    p.site = sites(:nentir_vale)
     p.valid?
-    assert_nil p.errors.on(:site)
+    assert_nil p.errors.on(:site_id)
   end
   
   def test_belongs_to

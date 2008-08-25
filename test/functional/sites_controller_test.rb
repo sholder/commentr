@@ -1,6 +1,23 @@
 require 'test_helper'
 
 class SitesControllerTest < ActionController::TestCase
+  
+  def setup
+    @request.session[:user_id] = users(:sholder).id
+  end
+  
+  def test_not_logged_in
+    @request.session[:user_id] = nil
+    get :index
+    assert_redirected_to login_url
+  end
+  
+  def test_logged_in_non_admin
+    @request.session[:user_id] = users(:clay).id
+    get :index
+    assert_redirected_to login_url
+  end
+  
   def test_should_get_index
     get :index
     assert_response :success
