@@ -1,8 +1,5 @@
-<div>
-  <% @comments.each do |c| %>
-    <div class="comment">
-      <span><%= h c.text %></span>
-      <span>Posted by <%= h c.nickname %> <%= time_ago_in_words c.created_at %> ago</span>
-    </div>
+<div id="comment_list">
+  <% @comments.each do |comment| %>
+    <%= render :partial => 'comment', :object => comment %>
   <% end %>
 </div>
