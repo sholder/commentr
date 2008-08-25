@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+sholder:
+  username: sholder
+  is_admin: true
+  password_hash: <%= User.hash 'sholder' %>
+  
+clay:
+  username: clay
+  is_admin: false
+  password_hash: <%= User.hash 'clay' %>
