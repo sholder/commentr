@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
   
   protected
   
+  def login_user(user)
+    session[:user_id] = user.id
+    @user = user
+    redirect_to sites_path
+  end
+  
   def logged_in?
     return !session[:user_id].nil?
   end

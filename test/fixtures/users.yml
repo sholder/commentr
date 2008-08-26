@@ -3,9 +3,9 @@
 sholder:
   username: sholder
   is_admin: true
-  password_hash: <%= User.hash 'sholder' %>
+  password_hash: <%= User.pw_hash 'sholder' %>
   
 clay:
   username: clay
   is_admin: false
-  password_hash: <%= User.hash 'clay' %>
+  password_hash: <%= User.pw_hash 'clay' %>
