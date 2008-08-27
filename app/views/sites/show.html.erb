@@ -1,3 +1,29 @@
+<p>
+Site name: <%= h @site.name %>
+</p>
+
+<div>
+  Pages:
+  <ul id="pagelist">
+    <% @site.pages.each do |p| %>
+      <%= render :partial => 'pages/page_summary', :object => p %>
+    <% end %>
+  </ul>
+</div>
+
+<script language="javascript">
+resp = function(request) {
+  alert('Recieved: ' + reqeust.responseText);
+  eval(request.responseText);
+}
+</script>
+
+<div>
+  <% remote_form_for([@site, @page]) do |f| %>
+    Add a page named: <%= f.text_field :name %>
+    <%= f.submit 'Add' %>
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_site_path(@site) %> |
 <%= link_to 'Back', sites_path %>

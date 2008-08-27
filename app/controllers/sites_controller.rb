@@ -17,6 +17,7 @@ class SitesController < ApplicationController
   # GET /sites/1.xml
   def show
     @site = Site.find(params[:id])
+    @page = Page.new(:site => @site)
 
     respond_to do |format|
       format.html # show.html.erb

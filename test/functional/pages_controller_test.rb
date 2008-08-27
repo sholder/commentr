@@ -31,7 +31,7 @@ class PagesControllerTest < ActionController::TestCase
 
   def test_should_create_page
     assert_difference('Page.count') do
-      post :create, :page => {:name => 'new page', :site_id => sites(:nentir_vale)}
+      post :create, {:site_id => sites(:nentir_vale), :page => {:name => 'new page'}}
     end
 
     assert_redirected_to page_path(assigns(:page))
