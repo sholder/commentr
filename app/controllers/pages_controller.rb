@@ -46,28 +46,20 @@ class PagesController < ApplicationController
     @page = Page.new(params[:page])
     @page.site = Site.find(params[:site_id])
 
-=begin
-    if @page.save
-      unless request.xhr?
-        flash[:notice] = 'page was successfully created.'
-      end
-    end
-=end
-#=begin
+
     respond_to do |format|
       if @page.save
         flash[:notice] = 'page was successfully created.'
         format.html { redirect_to(@page) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
         format.js   { render :update do |page| 
-              page.insert_html :bottom, 'pagelist', :partial => 'page_summary', :object => @page
-            end }
+            page.insert_html :bottom, 'pagelist', :partial => 'page_summary', :object => @page 
+        end }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
     end
-#=end
   end
 
   # PUT /pages/1
@@ -96,6 +88,9 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(pages_url) }
       format.xml  { head :ok }
+      format.js { render :update do |page|
+        page.remove "page#{@page.id}"
+      end }
     end
   end
 

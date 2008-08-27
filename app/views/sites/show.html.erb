@@ -4,19 +4,12 @@ Site name: <%= h @site.name %>
 
 <div>
   Pages:
-  <ul id="pagelist">
+  <table id="pagelist">
     <% @site.pages.each do |p| %>
       <%= render :partial => 'pages/page_summary', :object => p %>
     <% end %>
-  </ul>
+  </table>
 </div>
-
-<script language="javascript">
-resp = function(request) {
-  alert('Recieved: ' + reqeust.responseText);
-  eval(request.responseText);
-}
-</script>
 
 <div>
   <% remote_form_for([@site, @page]) do |f| %>

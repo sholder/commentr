@@ -1,3 +1,4 @@
-<li>
-    <%= h page_summary.name %>
-</li>
+<tr id="page<%= page_summary.id%>">
+    <td><%= h page_summary.name %></td>
+    <td><%= link_to_remote 'Remove', :url => page_url(:id => page_summary.id), :confirm => 'Are you sure?', :method => :delete %></td>
+</tr>
