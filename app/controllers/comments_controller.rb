@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  caches_page :index
+  
   def index
     @page = Page.find(params[:page_id])
     @comments = @page.comments
@@ -11,6 +13,8 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(params[:comment])
-    @comment.save
+    if(@comment.save)
+      expire_page :action => 'index', :page_id => @comment.page.id
+    end    
   end
 end
