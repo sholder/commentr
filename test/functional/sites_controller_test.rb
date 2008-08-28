@@ -7,14 +7,14 @@ class SitesControllerTest < ActionController::TestCase
   end
   
   def test_not_logged_in
-    @request.session[:user_id] = nil
-    get :index
+    logout
+    get :new
     assert_redirected_to login_url
   end
   
   def test_logged_in_non_admin
-    @request.session[:user_id] = users(:clay).id
-    get :index
+    logout
+    get :new
     assert_redirected_to login_url
   end
   
@@ -42,6 +42,14 @@ class SitesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  def test_should_show_site_in_atom_for_non_auth_user
+    logout
+    get :show, {:id => sites(:nentir_vale).id, :format => 'atom'}
+    assert_response :success
+    
+    # TODO(sholder) asserts about validity of the atom feed
+  end
+
   def test_should_get_edit
     get :edit, :id => sites(:nentir_vale).id
     assert_response :success
@@ -58,5 +66,11 @@ class SitesControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to sites_path
+  end
+  
+  private 
+  
+  def logout
+    @request.session[:user_id] = nil
   end
 end

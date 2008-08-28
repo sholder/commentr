@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
 
-  before_filter :admin_only
+  before_filter :admin_only, :except => [:index, :show]
 
   # GET /sites
   # GET /sites.xml
@@ -15,13 +15,14 @@ class SitesController < ApplicationController
 
   # GET /sites/1
   # GET /sites/1.xml
+  # GET /sites/1.atom
   def show
     @site = Site.find(params[:id])
-    @page = Page.new(:site => @site)
 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @site }
+      format.atom
     end
   end
 

@@ -12,7 +12,7 @@ Site name: <%= h @site.name %>
 </div>
 
 <div>
-  <% remote_form_for([@site, @page]) do |f| %>
+  <% remote_form_for([@site, Page.new(:site => @site)]) do |f| %>
     Add a page named: <%= f.text_field :name %>
     <%= f.submit 'Add' %>
   <% end %>
