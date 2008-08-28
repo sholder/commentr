@@ -7,6 +7,7 @@ set :deploy_via, :remote_cache
 
 set :deploy_to, "/home/sholder/webapps/commentr"
 
+set :use_sudo, false
 set :user, 'sholder'
 set :ssh_options, { :forward_agent => true }
 
