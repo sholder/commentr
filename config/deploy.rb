@@ -21,6 +21,14 @@ namespace :deploy do
     run "touch #{current_path}/tmp/restart.txt"
   end
  
+
+  # task :copy_database_configuration do 
+  #   production_db_config = "/home/sholder/config/commentr/production.database.yml" 
+  #   run "cp #{production_db_config} #{release_path}/config/database.yml" 
+  # end
+  # after "deploy:update_code", "deploy:copy_database_configuration" 
+ 
+ 
   [:start, :stop].each do |t|
     desc "#{t} task is a no-op with mod_rails"
     task t, :roles => :app do ; end
