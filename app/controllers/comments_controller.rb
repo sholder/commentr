@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def create
+    # TODO(sholder) preserve the name used for commenting in a cookie
     @comment = Comment.new(params[:comment])
     if(@comment.save)
       expire_page :action => 'index', :page_id => @comment.page.id
