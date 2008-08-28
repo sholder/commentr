@@ -1,5 +1,7 @@
 <tr id="page<%= page_summary.id%>">
     <td><%= h page_summary.name %></td>
-    <td>Widget: <%= link_to formatted_page_comments_url(:page_id => page_summary.id, :format => 'xml'),  formatted_page_comments_url(:page_id => page_summary.id, :format => 'xml') %></td>
-    <td><%= link_to_remote 'Remove', :url => page_url(:id => page_summary.id), :confirm => 'Are you sure?', :method => :delete %></td>
+    <% if admin? %>
+        <td>Widget: <%= link_to formatted_page_comments_url(:page_id => page_summary.id, :format => 'xml'),  formatted_page_comments_url(:page_id => page_summary.id, :format => 'xml') %></td>
+        <td><%= link_to_remote 'Remove', :url => page_url(:id => page_summary.id), :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
 </tr>

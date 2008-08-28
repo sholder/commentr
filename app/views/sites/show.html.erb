@@ -18,5 +18,11 @@ Site name: <%= h @site.name %>
   <% end %>
 </div>
 
-<%= link_to 'Edit', edit_site_path(@site) %> |
-<%= link_to 'Back', sites_path %>
+<% if admin? %>
+    <%= link_to 'Edit', edit_site_path(@site) %> |
+    <%= link_to 'Back', sites_path %>
+<% end %>
+
+<p class="feed-link">
+  <%= link_to "Feed for this site", :format => :atom %>
+</p>
