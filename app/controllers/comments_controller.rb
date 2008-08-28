@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     if(@comment.save)
       expire_page :action => 'index', :page_id => @comment.page.id
+      expire_page :controller => 'sites', :action => 'show', :id => @comment.page.site.id
     end    
   end
 end

@@ -49,6 +49,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
+        expire_site_cache
         flash[:notice] = 'page was successfully created.'
         format.html { redirect_to(@page) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
@@ -69,6 +70,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
+        expire_site_cache
         flash[:notice] = 'page was successfully updated.'
         format.html { redirect_to(@page) }
         format.xml  { head :ok }
@@ -84,6 +86,7 @@ class PagesController < ApplicationController
   def destroy
     @page = Page.find(params[:id])
     @page.destroy
+    expire_site_cache
 
     respond_to do |format|
       format.html { redirect_to(pages_url) }
@@ -92,6 +95,12 @@ class PagesController < ApplicationController
         page.remove "page#{@page.id}"
       end }
     end
+  end
+
+  private
+  
+  def expire_site_cache
+    expire_page :controller => 'sites', :action => 'show', :id => @page.site.id
   end
 
 end
