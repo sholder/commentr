@@ -33,6 +33,7 @@ class CommentsControllerTest < ActionController::TestCase
     assert_not_nil comment.page
     assert_not_nil comment.page.id
     assert_match '<form', @response.body
+    
     # TODO(sholder) some assertions about the validity of the XML
   end
 end
