@@ -22,11 +22,11 @@ namespace :deploy do
   end
  
 
-  # task :copy_database_configuration do 
-  #   production_db_config = "/home/sholder/config/commentr/production.database.yml" 
-  #   run "cp #{production_db_config} #{release_path}/config/database.yml" 
-  # end
-  # after "deploy:update_code", "deploy:copy_database_configuration" 
+  task :copy_database_configuration do 
+    production_db_config = "/home/sholder/config/commentr/production.database.yml" 
+    run "cp #{production_db_config} #{release_path}/config/database.yml" 
+  end
+  after "deploy:update_code", "deploy:copy_database_configuration" 
  
  
   [:start, :stop].each do |t|
