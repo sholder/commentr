@@ -19,6 +19,14 @@ class CommentsController < ApplicationController
     if(@comment.save)
       expire_page :action => 'index', :page_id => @comment.page.id
       expire_page :controller => 'sites', :action => 'show', :id => @comment.page.site.id
-    end    
+      
+      respond_to do |format|
+        format.html
+        format.js { render :update do |page| 
+          page.insert_html :top, 'comment_list', :partial => 'comment'
+        end }
+      end
+      
+    end
   end
 end

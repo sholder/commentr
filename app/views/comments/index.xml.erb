@@ -9,10 +9,19 @@
   </ModulePrefs> 
   <Content type="html">
      <![CDATA[ 
+     
+<%= javascript_include_tag 'http://www.teamholder.com/commentr/javascripts/prototype.js' %>
+<%= javascript_include_tag 'http://www.teamholder.com/commentr/javascripts/effects.js' %>
+<%= javascript_include_tag 'http://www.teamholder.com/commentr/javascripts/dragdrop.js' %>
+<%= javascript_include_tag 'http://www.teamholder.com/commentr/javascripts/application.js' %>
 
 <%= render :partial => 'new' %>
 <%= render :partial => 'comments' %>
-
+        
+<script type="text/javascript">
+_IG_AdjustIFrameHeight();
+</script>
+        
      ]]>
   </Content> 
 </Module>
