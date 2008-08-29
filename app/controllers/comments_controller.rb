@@ -2,6 +2,8 @@ class CommentsController < ApplicationController
 
   caches_page :index
   
+  protect_from_forgery :except => [:create]
+  
   def index
     @page = Page.find(params[:page_id])
     @comments = @page.comments
